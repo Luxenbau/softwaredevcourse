@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - AddPartyScript
+  - MonsterTemplate
+  - InitiativePanel
+  - HP_Panel
+  - ImageScript
   layers:
   - Default
   - TransparentFX

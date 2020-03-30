@@ -47,6 +47,6 @@ public class CharacterPartyLoad : MonoBehaviour
     void Update()
     {
         //Debug.Log("Current party characters " + currentPartyCharacters.Count);
-        Debug.Log("partyCharacters " + partyCharacters.Count);
+       // Debug.Log("partyCharacters " + partyCharacters.Count);
     }
 }

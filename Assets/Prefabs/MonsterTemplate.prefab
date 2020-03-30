@@ -1236,8 +1236,8 @@ MonoBehaviour:
   monsterImage: {fileID: 6858440556321624245}
   monster: {fileID: 0}
   monsterSelected: 0
-  selectColor: {r: 0.6698113, g: 0.31278923, b: 0.31278923, a: 0}
-  standardColor: {r: 0.36078432, g: 0.65882355, b: 0.5568628, a: 0}
+  selectColor: {r: 0.6698113, g: 0.31278923, b: 0.31278923, a: 1}
+  standardColor: {r: 0.36078432, g: 0.65882355, b: 0.5568628, a: 1}
   templateBackground: {fileID: 6858440557435286305}
 --- !u!114 &6858440557435286305
 MonoBehaviour:

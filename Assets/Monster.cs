@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Monster : MonoBehaviour
+public abstract class Monster 
 {
     public int monsterId;
     public string monsterName;
@@ -10,6 +10,7 @@ public abstract class Monster : MonoBehaviour
     public int attackModifier;
     public int monsterHealth;
     public int monsterInitiative;
+    public int initiative;
     public int imageId;
 
     public abstract void MonsterData(int monsterId);

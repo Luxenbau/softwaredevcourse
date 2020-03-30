@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 
 public class CharacterDataLoad : MonoBehaviour, IPointerClickHandler
 {
+    public int id;
     public TextMeshProUGUI charName;
     public TextMeshProUGUI playerName;
     public TextMeshProUGUI className;
@@ -21,6 +22,7 @@ public class CharacterDataLoad : MonoBehaviour, IPointerClickHandler
     public Color standardColor; 
     public CharacterPartyLoad characterPartyLoad;
     public string currentLocation;
+    public ChooseImage chooseImage;
     //public bool testing;
 
 
@@ -36,6 +38,7 @@ public class CharacterDataLoad : MonoBehaviour, IPointerClickHandler
         raceName.text = character.characterRace;
         charHP.text = character.characterHP.ToString();
         charInitiative.text = character.characterInitiative.ToString();
+        charImage.sprite = chooseImage.characterSpriteList[character.iconID];
 
     }
 
@@ -46,9 +49,10 @@ public class CharacterDataLoad : MonoBehaviour, IPointerClickHandler
         //if (currentLocation=="selectPage")
         //{
             characterPartyLoad = GameObject.FindGameObjectWithTag("AddPartyScript").GetComponent<CharacterPartyLoad>();
-       // }
+            chooseImage = GameObject.FindGameObjectWithTag("ImageScript").GetComponent<ChooseImage>();
+        // }
         // characterPartyLoad = new CharacterPartyLoad();
-        
+
         // character = new Character();
         //character.CharacterData(0, "Mark", "Mark", 10, 4, "Dwarf", "Paladin");
     }
@@ -62,6 +66,7 @@ public class CharacterDataLoad : MonoBehaviour, IPointerClickHandler
     {
         if (character != null)
         {
+            id = character.characterId;
             CharDataLoad();
         }
         if (charSelected)

@@ -5,8 +5,10 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class MonsterDataLoad : MonoBehaviour
+
+public class MonsterDataLoad : MonoBehaviour, IPointerClickHandler
 {
+    public int id;
     public TextMeshProUGUI monsterName;
     public TextMeshProUGUI monsterDamage;
     public TextMeshProUGUI monsterHP;
@@ -18,16 +20,20 @@ public class MonsterDataLoad : MonoBehaviour
     public Color selectColor;
     public Color standardColor;
     public Image templateBackground;
+    public MonsterTemplateLoad monsterTemplateLoad;
+    public ChooseImage chooseImage;
+
 
 
     public void DataLoad()
     {
-        //Debug.Log("Starting data load");
+        
         monsterName.text = monster.monsterName;
         monsterDamage.text = monster.monsterDamage;
         monsterHP.text = monster.monsterHealth.ToString();
         monsterInitiative.text = monster.monsterInitiative.ToString();
         attackModifier.text = monster.attackModifier.ToString();
+        monsterImage.sprite = chooseImage.monsterSpriteList[monster.imageId];
 
 
     }
@@ -36,6 +42,7 @@ public class MonsterDataLoad : MonoBehaviour
     {
         if (monster != null)
         {
+            id = monster.monsterId;
             DataLoad();
         }
         if (monsterSelected)
@@ -47,5 +54,31 @@ public class MonsterDataLoad : MonoBehaviour
         {
             templateBackground.color = standardColor;
         }
+    }
+
+
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        
+
+        if (monsterSelected)
+        {
+            monsterSelected = false;
+            monsterTemplateLoad.monstersTemplateToDelete.Remove(gameObject);
+            
+        } else if (!monsterSelected)
+        {
+            monsterSelected = true;
+            Debug.Log("Selected Id" + gameObject.GetComponent<MonsterDataLoad>().monster.monsterId);
+            monsterTemplateLoad.monstersTemplateToDelete.Add(gameObject);
+        }
+    }
+
+    void Start()
+    {
+        monsterTemplateLoad = GameObject.FindGameObjectWithTag("MonsterTemplate").GetComponent<MonsterTemplateLoad>();
+        chooseImage = GameObject.FindGameObjectWithTag("ImageScript").GetComponent<ChooseImage>();
+
     }
 }

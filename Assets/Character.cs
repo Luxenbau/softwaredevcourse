@@ -10,6 +10,7 @@ public class Character
     public string characterName;
     public int characterHP;
     public int characterInitiative;
+    public int initiative;
     public string characterRace;
     public string characterClass;
 

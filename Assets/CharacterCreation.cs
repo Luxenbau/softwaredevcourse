@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class CharacterCreation : MonoBehaviour
 {
@@ -14,6 +15,10 @@ public class CharacterCreation : MonoBehaviour
     public TMP_Dropdown characterRace;
     public TMP_Dropdown characterClass;
     public FireBaseConnect fireBaseReference;
+    public int iconId;
+    public bool imageIsSet;
+    public Button createBtn;
+    public TextMeshProUGUI errorText;
 
 
     public void CreateCharacter()
@@ -24,20 +29,23 @@ public class CharacterCreation : MonoBehaviour
             Character character = new Character();
 
            int charId =  (int)fireBaseReference.characterCount;
+            Debug.Log("CharId current" + charId);
 
-            character.CharacterData(charId, 0, playerName.text,characterName.text, int.Parse(characterHP.text), int.Parse(characterInitiative.text), characterRace.options[characterRace.value].text, characterClass.options[characterClass.value].text);
+            character.CharacterData(charId, iconId, playerName.text,characterName.text, int.Parse(characterHP.text), int.Parse(characterInitiative.text), characterRace.options[characterRace.value].text, characterClass.options[characterClass.value].text);
 
 
             characters.Add(character);
 
             fireBaseReference.SaveCharacter(character);
-            
+
+            CharacterInfoReset();
          //   ShowCharactersList();
         }
         else
         {
             Debug.Log("Сheck that all fields are filled");
         }
+
     }
     
     private void ShowCharactersList()
@@ -49,31 +57,62 @@ public class CharacterCreation : MonoBehaviour
         }
     }
 
+    public void CharacterInfoReset()
+    {
+        characterHP.text = "";
+        characterName.text = "";
+        characterInitiative.text = "";
+        playerName.text = "";
+        characterRace.value = 0;
+        characterClass.value = 0;
+    }
     private bool CharacterValidation()
     {
-        if (string.IsNullOrWhiteSpace(playerName.text))
+        if (!imageIsSet)
         {
+           
+            return false;
+        }
+         else if (string.IsNullOrWhiteSpace(playerName.text))
+        {
+           
             return false;
         }
         else if(string.IsNullOrWhiteSpace(characterName.text))
         {
+            
+            return false;
+        }
+        else if (string.IsNullOrWhiteSpace(characterInitiative.text)  )
+        {
+            return false;
+        }
+        else if (int.Parse(characterInitiative.text) < 0 || int.Parse(characterInitiative.text) > 1000)
+        {
+            ErrorBox();
             return false;
         }
         else if (string.IsNullOrWhiteSpace(characterHP.text))
         {
+            
             return false;
         }
-        else if (string.IsNullOrWhiteSpace(characterInitiative.text))
+        else if (int.Parse(characterHP.text) < 0 || int.Parse(characterHP.text) > 1000)
         {
-            //TODO Int validation
+            ErrorBox();
             return false;
         }
         else
         {
+            errorText.enabled = false;
             return true;
         }
     }
-
+    public void ErrorBox()
+    {
+       // errorText.text = "Fields must not be empty, HP and Initiative values must be between 0 and 1000";
+        errorText.enabled = true;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -83,6 +122,8 @@ public class CharacterCreation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        createBtn.interactable = CharacterValidation();
         
     }
 }
