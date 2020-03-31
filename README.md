@@ -53,7 +53,7 @@ characters.
 
 This app is an early alpha version, there are many additional functionalities that could be implemented in the future. With the time limit I
 had, this is what I produced, a basic MVP. Continuing development of the app will require substantial investment of time and resources.
-Thank you for the attention.
+Thank you for the attention!
 
 
 
