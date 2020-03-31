@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+// default abstract monster class from which monsters will be generated
 public abstract class Monster 
 {
     public int monsterId;
@@ -14,7 +14,7 @@ public abstract class Monster
     public int imageId;
 
     public abstract void MonsterData(int monsterId);
-   // public abstract void MonsterData();
+
 
 
 }

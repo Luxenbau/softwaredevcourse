@@ -23,8 +23,6 @@ public class MonsterDataLoad : MonoBehaviour, IPointerClickHandler
     public MonsterTemplateLoad monsterTemplateLoad;
     public ChooseImage chooseImage;
 
-
-
     public void DataLoad()
     {
         
@@ -34,8 +32,6 @@ public class MonsterDataLoad : MonoBehaviour, IPointerClickHandler
         monsterInitiative.text = monster.monsterInitiative.ToString();
         attackModifier.text = monster.attackModifier.ToString();
         monsterImage.sprite = chooseImage.monsterSpriteList[monster.imageId];
-
-
     }
 
     void Update()
@@ -56,12 +52,9 @@ public class MonsterDataLoad : MonoBehaviour, IPointerClickHandler
         }
     }
 
-
-
     public void OnPointerClick(PointerEventData eventData)
     {
         
-
         if (monsterSelected)
         {
             monsterSelected = false;
@@ -70,7 +63,6 @@ public class MonsterDataLoad : MonoBehaviour, IPointerClickHandler
         } else if (!monsterSelected)
         {
             monsterSelected = true;
-            Debug.Log("Selected Id" + gameObject.GetComponent<MonsterDataLoad>().monster.monsterId);
             monsterTemplateLoad.monstersTemplateToDelete.Add(gameObject);
         }
     }

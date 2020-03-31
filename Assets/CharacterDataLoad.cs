@@ -23,15 +23,10 @@ public class CharacterDataLoad : MonoBehaviour, IPointerClickHandler
     public CharacterPartyLoad characterPartyLoad;
     public string currentLocation;
     public ChooseImage chooseImage;
-    //public bool testing;
-
-
-
 
 
     public void CharDataLoad()
     {
-        //Debug.Log("Starting data load");
         charName.text = character.characterName;
         playerName.text = character.playerName;
         className.text = character.characterClass;
@@ -42,24 +37,10 @@ public class CharacterDataLoad : MonoBehaviour, IPointerClickHandler
 
     }
 
-
-
     void Start()
     {
-        //if (currentLocation=="selectPage")
-        //{
             characterPartyLoad = GameObject.FindGameObjectWithTag("AddPartyScript").GetComponent<CharacterPartyLoad>();
             chooseImage = GameObject.FindGameObjectWithTag("ImageScript").GetComponent<ChooseImage>();
-        // }
-        // characterPartyLoad = new CharacterPartyLoad();
-
-        // character = new Character();
-        //character.CharacterData(0, "Mark", "Mark", 10, 4, "Dwarf", "Paladin");
-    }
-
-   public void selectCharacters()
-    {
-
     }
 
     void Update()
@@ -78,49 +59,24 @@ public class CharacterDataLoad : MonoBehaviour, IPointerClickHandler
         {
             templateBackground.color = standardColor;
         }
-        //if (testing)
-        //{
-        //    templateBackground.color = selectColor;
-        //}
-        
-       
+
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        //throw new System.NotImplementedException();
         if (currentLocation == "partyPage")
         {
-            // To do : delete the currently selected characters from the party
         }
         else if(currentLocation == "selectPage")
         {
-
-
             if (charSelected)
             {
                 charSelected = false;
-
-                //*
-
-                //for (int i = 0; i < characterPartyLoad.partyCharacters.Count; i++)
-                //{
-                //    if (characterPartyLoad.partyCharacters[i].characterId == character.characterId)
-                //    {
-                //        characterPartyLoad.partyCharacters.RemoveAt(i);
-                //    }
-                //}
-                   
-                //characterPartyLoad.partyCharacters.Remove(character);
             }
             else
             {
                 charSelected = true;
-
-                //characterPartyLoad.partyCharacters.Add(character);
-
             }
         }
-     Debug.Log(characterPartyLoad.partyCharacters.Count + " characters selected");
     }
 }

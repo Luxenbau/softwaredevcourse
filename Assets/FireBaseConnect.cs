@@ -16,7 +16,7 @@ public class FireBaseConnect : MonoBehaviour {
     [SerializeField]  CharacterTemplateLoad characterTemplateLoad;
 
 
-    // Use this for initialization
+    // database initialization
     void Start () {
         FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://new-project-1d112.firebaseio.com");
 
@@ -24,22 +24,15 @@ public class FireBaseConnect : MonoBehaviour {
          reference = FirebaseDatabase.DefaultInstance.RootReference;
     }
 	
-	// Update is called once per frame
-	void Update () {
-        
-    }
-
 
     public void SaveCharacter(Character character)
     {
        
 
         string json = JsonUtility.ToJson(character);
-       // for (int i=21; i < 31; i++)
-        //{
+        // adding character to firebase database
             reference.Child("Characters").Child("Character" +characterCount).SetRawJsonValueAsync(json);
-       // }
-      //  reference.Child("Characters").Child("Character1").SetRawJsonValueAsync(json);
+
     }
 
 public void GetCharactersFromDatabase()
@@ -50,7 +43,8 @@ public void GetCharactersFromDatabase()
         {
             if (task.IsFaulted)
             {
-                // Handle the error...
+                // checking for error
+                Debug.Log("Database connection error, task is faulted");
             }
             else if (task.IsCompleted)
             {
@@ -64,7 +58,7 @@ public void GetCharactersFromDatabase()
                
                 
             }
-            Debug.Log("Character count in the database " + characterCount);
+            // debug to view all characters in the list
             GetAllCharacters();
             characterTemplateLoad.connectComplete = true;
 
@@ -79,8 +73,6 @@ public void GetCharactersFromDatabase()
     
     public void GetAllCharacters()
     {
-        
-        Debug.Log(characters.Count);
         foreach (var character in characters)
          {
              Debug.Log(string.Format("Characters \nCharacter: {0} \nIcon ID: {1} \nPlayer: {2} \nCharacter: {3}  \nHP: {4}  \nInitiative: {5} \nRace: {6} \nClass: {7}",

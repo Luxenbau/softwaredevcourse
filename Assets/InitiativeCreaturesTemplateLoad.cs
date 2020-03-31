@@ -10,38 +10,12 @@ public class InitiativeCreaturesTemplateLoad : MonoBehaviour
     public List<GameObject> creaturesTemplates = new List<GameObject>();
     public GameObject confirmInitiativeBtn;
     public BattleCreaturesTemplateLoad battleCreaturesTemplateLoad;
-    //public bool allInitiativeSet;
 
-    private void Start()
-    {
-        //LoadCreatures();
-    }
 
     public void ConfirmAllInitiatives()
     {
         battleCreaturesTemplateLoad.creaturesTemplates.AddRange(creaturesTemplates);
         battleCreaturesTemplateLoad.LoadBattlePanel();
-
-        //UnloadCreatures();
-
-        //battleCreaturesTemplateLoad.creaturesTemplates.AddRange(creaturesTemplates);
-
-        //battleCreaturesTemplateLoad.monsters.AddRange(monsterTemplateLoad.monsters);
-
-        //battleCreaturesTemplateLoad.characters.AddRange(characterPartyLoad.partyCharacters);
-
-        //foreach (var item in creaturesTemplates)
-        //{
-        //    if (item.GetComponent<CreatureDataLoad>().character != null)
-        //    {
-        //        Debug.Log(item.GetComponent<CreatureDataLoad>().character);
-        //    }
-
-        //    if (item.GetComponent<CreatureDataLoad>().monster != null)
-        //    {
-        //        Debug.Log(item.GetComponent<CreatureDataLoad>().monster);
-        //    }
-        //}
     }
 
     public void UnloadCreatures()

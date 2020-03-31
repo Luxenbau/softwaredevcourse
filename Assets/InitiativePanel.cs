@@ -11,18 +11,13 @@ public class InitiativePanel : MonoBehaviour
     public TextMeshProUGUI creatureName;
     public Character character;
     public Monster monster;
+    public Button confirmInitiativeButton;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     public void InitiativeRoll()
     {
         inputField.text = DiceRoll.D20().ToString();
     }
-
 
     public void ConfirmInitiative()
     {
@@ -42,22 +37,44 @@ public class InitiativePanel : MonoBehaviour
         inputField.text = "";
     }
 
-    // Update is called once per frame
+    public bool isInputCorrect()
+    {
+        int t;
+        bool isNumberInt = int.TryParse(inputField.text, out t);
+        if (string.IsNullOrWhiteSpace(inputField.text))
+        {
+            return false;
+        }
+        else if (isNumberInt)
+        {
+            if (int.Parse(inputField.text) <= 0 || int.Parse(inputField.text) > 20)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        else
+        {
+            return false;
+        }
+    }
     void Update()
     {
         if (character != null)
         {
             initiative.text = "+" + character.characterInitiative;
             creatureName.text = character.characterName;
-            Debug.Log("Test penis char1");
         }
 
         if (monster != null)
         {
-            
             initiative.text = "+" + monster.monsterInitiative;
             creatureName.text = monster.monsterName;
-            Debug.Log("Test penis char2 ");
         }
+
+        confirmInitiativeButton.interactable = isInputCorrect();
     }
 }

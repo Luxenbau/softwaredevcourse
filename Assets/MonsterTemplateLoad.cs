@@ -21,19 +21,18 @@ public class MonsterTemplateLoad : MonoBehaviour
     public List<GameObject> monsterTemplates = new List<GameObject>();
     public List<GameObject> monstersTemplateToDelete = new List<GameObject>();
     public GameObject showDeletePanel;
+    public Button addMonsterBtn;
 
    
 
     public void LoadSelectedMonsterPanel(string _selectedMonster)
     {
         selectedMonster = _selectedMonster;
-
     }
 
     public void AddMonster()
     {
-        monsterCount = int.Parse(selectedMonsterNumber.text); 
-        
+        monsterCount = int.Parse(selectedMonsterNumber.text);        
         if (monsterCount>0)
         {
           int  monsterCountTemp = monsters.Count;
@@ -45,34 +44,50 @@ public class MonsterTemplateLoad : MonoBehaviour
                     Wolf wolf = new Wolf();
                     wolf.MonsterData( i + monsterCountTemp);
                     monsterTemp.GetComponent<MonsterDataLoad>().monster = wolf ;
-                    Debug.Log("monsterTemp1 is " + monsterTemp.GetComponent<MonsterDataLoad>().monster.monsterName);
                 } else if (selectedMonster == "Bandit")
                 {
 
                     Bandit bandit = new Bandit();
                     bandit.MonsterData(i + monsterCountTemp);
                     monsterTemp.GetComponent<MonsterDataLoad>().monster = bandit;
-                    Debug.Log("monsterTemp2 is " + monsterTemp.GetComponent<MonsterDataLoad>().monster.monsterName);
                 }
-                Debug.Log("monsterTemp3 is " + monsterTemp.GetComponent<MonsterDataLoad>().monster.monsterName);
                 monsterTemplates.Add(monsterTemp);
 
                 monsters.Add(monsterTemp.GetComponent<MonsterDataLoad>().monster);
-                Debug.Log("monsterTemp4 is " + monsterTemp.GetComponent<MonsterDataLoad>().monster.monsterName);
 
-
-            }
-
-       
+            }    
         }
         selectedMonsterNumber.text = "";
     }
 
+    public bool MonsterNumberValidation()
+    {
+        int t;
+        bool isNumberInt = int.TryParse(selectedMonsterNumber.text, out t);
+        
+        if (string.IsNullOrWhiteSpace(selectedMonsterNumber.text))
+        {
+            return false;
+        }
+        else if ( isNumberInt)
+        {
+            if (int.Parse(selectedMonsterNumber.text) <=0 || int.Parse(selectedMonsterNumber.text) >100 )
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     public void MonsterDelete()
     {
-
-       
-
         foreach (var monsterToDelete in monstersTemplateToDelete)
         {
             monsterTemplates.Remove(monsterToDelete);
@@ -80,38 +95,9 @@ public class MonsterTemplateLoad : MonoBehaviour
             Destroy(monsterToDelete.gameObject);
         }
 
-        //foreach (var template in monstersTemplateToDelete)
-        //{
-        //    Destroy(template.gameObject);
-        //}
-
         monstersTemplateToDelete.Clear();
-
-
-       
-
-        Debug.Log("monstersTemplateToDelete.Count = " + monstersTemplateToDelete.Count);
-        Debug.Log("monsterTemplates.Count = " + monsterTemplates.Count);
-        Debug.Log("monsters.Count = " + monsters.Count);
-
-        foreach (var item in monsterTemplates)
-        {
-            Debug.Log("1monsterId = "+ item.GetComponent<MonsterDataLoad>().monster.monsterId);
-        }
-
-        // reset the damn ids
+        // reset the monster ids
         ResetIdAfterDelete();
-
-        foreach (var item in monsterTemplates)
-        {
-            Debug.Log("2monsterId = " + item.GetComponent<MonsterDataLoad>().monster.monsterId);
-        }
-
-        //foreach (var item in monsterTemplates)
-        //{
-        //    Debug.Log("2monsterId = " + item.GetComponent<MonsterDataLoad>().monster.monsterId);
-        //}
-
     }
 
     // resetnut idshniki posle udalenija monstrov
@@ -121,21 +107,6 @@ public class MonsterTemplateLoad : MonoBehaviour
         {
             monsterTemplates[i].GetComponent<MonsterDataLoad>().monster.monsterId = i;
         }
-    }
-
-
-
-    public void LoadDataToTemplate()
-    {
-        //wolfTemplate.GetComponent<MonsterDataLoad>().monster = wolfData;
-        //banditTemplate.GetComponent<MonsterDataLoad>().monster = banditData;
-
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
     }
 
     // Update is called once per frame
@@ -149,5 +120,8 @@ public class MonsterTemplateLoad : MonoBehaviour
         {
             showDeletePanel.SetActive(false);
         }
+
+        addMonsterBtn.interactable = MonsterNumberValidation();
+
     }
 }

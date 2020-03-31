@@ -15,15 +15,6 @@ public class Bandit : Monster
         monsterInitiative = 2;
     }
 
-    //public override void MonsterData()
-    //{
-    //    monsterId = 0;
-    //    monsterName = "Bandit";
-    //    monsterDamage = "1d6";
-    //    attackModifier = 3;
-    //    monsterHealth = 16;
-    //    imageId = 1;
-    //    monsterInitiative = 2;
-    //}
+   
 
 }

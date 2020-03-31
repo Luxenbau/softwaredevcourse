@@ -24,12 +24,9 @@ public class CreatureDataLoad : MonoBehaviour, IPointerClickHandler
     public bool creatureTurn;
     public GameObject hpPanel;
     public ChooseImage chooseImage;
-    //public MonsterTemplateLoad monsterTemplateLoad;
-
 
     public void CharacterDataLoad()
     {
-        //Debug.Log("Starting data load");
         creatureName.text = character.characterName;
         creatureHP.text = character.characterHP.ToString();
         creatureInitiative.text = character.initiative.ToString();
@@ -39,7 +36,6 @@ public class CreatureDataLoad : MonoBehaviour, IPointerClickHandler
 
     public void MonsterDataLoad()
     {
-        //Debug.Log("Starting data load");
         creatureName.text = monster.monsterName;
         creatureHP.text = monster.monsterHealth.ToString();
         creatureInitiative.text = monster.initiative.ToString();
@@ -65,7 +61,6 @@ public class CreatureDataLoad : MonoBehaviour, IPointerClickHandler
         if (creatureSelected)
         {
             templateBackground.color = selectColor;
-
         }
         else
         {
@@ -73,12 +68,9 @@ public class CreatureDataLoad : MonoBehaviour, IPointerClickHandler
         }
     }
 
-
-
     public void OnPointerClick(PointerEventData eventData)
     {
       
-
         if (currentLocation == "initiativePage")
         {
             initiativeRollPanel.transform.GetChild(0).gameObject.SetActive(true);
@@ -97,7 +89,7 @@ public class CreatureDataLoad : MonoBehaviour, IPointerClickHandler
         }
         else if (currentLocation == "battlePage")
         {
-            
+            // Future functionality.
             //hpPanel.transform.GetChild(0).gameObject.SetActive(true);
 
             //if (character != null)
@@ -111,18 +103,6 @@ public class CreatureDataLoad : MonoBehaviour, IPointerClickHandler
             //}
         }
 
-        //if (monsterSelected)
-        //{
-        //    monsterSelected = false;
-        //    monsterTemplateLoad.monstersTemplateToDelete.Remove(gameObject);
-
-        //}
-        //else if (!monsterSelected)
-        //{
-        //    monsterSelected = true;
-        //    Debug.Log("Selected Id" + gameObject.GetComponent<MonsterDataLoad>().monster.monsterId);
-        //    monsterTemplateLoad.monstersTemplateToDelete.Add(gameObject);
-        //}
     }
 
     void Start()

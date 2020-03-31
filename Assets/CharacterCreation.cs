@@ -25,21 +25,17 @@ public class CharacterCreation : MonoBehaviour
     {
         if (CharacterValidation())
         {
-
             Character character = new Character();
 
            int charId =  (int)fireBaseReference.characterCount;
-            Debug.Log("CharId current" + charId);
 
             character.CharacterData(charId, iconId, playerName.text,characterName.text, int.Parse(characterHP.text), int.Parse(characterInitiative.text), characterRace.options[characterRace.value].text, characterClass.options[characterClass.value].text);
-
 
             characters.Add(character);
 
             fireBaseReference.SaveCharacter(character);
 
             CharacterInfoReset();
-         //   ShowCharactersList();
         }
         else
         {
@@ -68,9 +64,11 @@ public class CharacterCreation : MonoBehaviour
     }
     private bool CharacterValidation()
     {
+        int t;
+        bool isInitiativeInt = int.TryParse(characterInitiative.text, out t);
+        bool isHpInt = int.TryParse(characterHP.text, out t);
         if (!imageIsSet)
         {
-           
             return false;
         }
          else if (string.IsNullOrWhiteSpace(playerName.text))
@@ -87,36 +85,31 @@ public class CharacterCreation : MonoBehaviour
         {
             return false;
         }
-        else if (int.Parse(characterInitiative.text) < 0 || int.Parse(characterInitiative.text) > 1000)
-        {
-            ErrorBox();
-            return false;
-        }
+       
         else if (string.IsNullOrWhiteSpace(characterHP.text))
         {
             
             return false;
         }
-        else if (int.Parse(characterHP.text) < 0 || int.Parse(characterHP.text) > 1000)
+        else if (isInitiativeInt && isHpInt)
         {
-            ErrorBox();
-            return false;
+            if (int.Parse(characterInitiative.text) <= 0 || int.Parse(characterInitiative.text) > 1000 || int.Parse(characterHP.text) <=0 || int.Parse(characterHP.text) > 1000)
+            {
+                errorText.enabled = true;
+                return false;
+            }
+            else
+            {
+                errorText.enabled = false;
+                return true;
+            }
         }
         else
         {
-            errorText.enabled = false;
-            return true;
+
+            
+            return false;
         }
-    }
-    public void ErrorBox()
-    {
-       // errorText.text = "Fields must not be empty, HP and Initiative values must be between 0 and 1000";
-        errorText.enabled = true;
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
     }
 
     // Update is called once per frame

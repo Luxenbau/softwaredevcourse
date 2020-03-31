@@ -14,17 +14,6 @@ public class Character
     public string characterRace;
     public string characterClass;
 
-   // public bool isInParty;
-
-    //public Character(string _playerName, string _characterName, int _characterInitiative, string _characterRace, string _characterClass)
-    // {
-    //     playerName = _playerName;
-    //     characterName = _characterName;
-    //     characterInitiative = _characterInitiative;
-    //     characterRace = _characterRace;
-    //     characterClass = _characterClass;
-    // }
-
     public void CharacterData(int _characterId, int _iconID, string _playerName, string _characterName,int _characterHP, int _characterInitiative, string _characterRace, string _characterClass)
     {
         characterId = _characterId;
@@ -38,15 +27,4 @@ public class Character
         
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

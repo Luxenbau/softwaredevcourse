@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
+// HP panel script, currently not realised, reserved for future functionality
 public class HPPanel : MonoBehaviour
 {
     public Monster monster;
@@ -11,13 +11,6 @@ public class HPPanel : MonoBehaviour
     public TextMeshProUGUI creatureName;
     public TMP_InputField inputField;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (character != null)

@@ -29,35 +29,6 @@ public class BattleCreaturesTemplateLoad : MonoBehaviour
         return -initiative1.CompareTo(initiative2);
     }
 
-    //public void AddCreatureObject()
-    //{
-    //    Debug.Log("TEEEST1");
-
-    //    foreach (var template in creaturesTemplates)
-    //    {
-    //        Debug.Log("TEEEST2");
-    //        foreach (var monster in monsterTemplateLoad.monsters)
-    //        {
-    //            Debug.Log("TEEEST3");
-    //            if (template.GetComponent<CreatureDataLoad>().id == monster.monsterId)
-    //            {
-    //                Debug.Log("TEEEST4");
-    //                template.GetComponent<CreatureDataLoad>().monster = monster;
-    //            }
-    //        }
-
-    //        foreach (var character in characterPartyLoad.partyCharacters)
-    //        {
-    //            Debug.Log("TEEEST5");
-    //            if (template.GetComponent<CreatureDataLoad>().id == character.characterId)
-    //            {
-    //                Debug.Log("TEEEST6");
-    //                template.GetComponent<CreatureDataLoad>().character = character;
-    //            }
-    //        }
-    //    }
-    //}
-
     public void NextTurn()
     {
         creaturesTemplates.Add(creaturesTemplates[0]);
@@ -72,8 +43,6 @@ public class BattleCreaturesTemplateLoad : MonoBehaviour
 
         LoadCreaturesInBattle();
     }
-
-
 
     public void LoadCreaturesInBattle()
     {
@@ -90,9 +59,6 @@ public class BattleCreaturesTemplateLoad : MonoBehaviour
             loadedCreaturesTemplates.Add(temp);
         }
 
-        //AddCreatureObject();
-
-        //LoadBattlePanel();
     }
 
     public void LoadBattlePanel()
@@ -131,10 +97,6 @@ public class BattleCreaturesTemplateLoad : MonoBehaviour
         }
         loadedCreaturesTemplates.Clear();
         creaturesTemplates.Clear();
-
-
-
-
     }
 
     public void CheckAmountOfCreatures()
@@ -167,13 +129,6 @@ public class BattleCreaturesTemplateLoad : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         CheckAmountOfCreatures();

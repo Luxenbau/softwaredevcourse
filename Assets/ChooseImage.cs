@@ -15,11 +15,6 @@ public class ChooseImage : MonoBehaviour
     public List<Sprite> monsterSpriteList = new List<Sprite>();
     public Image characterImage;
 
-    void Start()
-    {
-        
-    }
-
     public void SetImageId(int id)
     {
         isImageSelected = true;
