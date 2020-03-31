@@ -33,6 +33,7 @@ which is located in the top middle of the editor ( with pause and stop buttons a
 16) The app should be up and running now.
 
 App details:
+
 Party tab:
 In this tab the current party and player characters are kept for the DM to access them at any time. Press the big add button to get the characters
 from the database, select/deselect characters that you wish to add to the party.Scroll holding mouse button. Press New to add a new character, enter the fields, the
