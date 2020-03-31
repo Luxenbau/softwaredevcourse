@@ -32,6 +32,9 @@ required resolution. Give it a name(label), and set it to 1080x1920. Clock Ok.
 which is located in the top middle of the editor ( with pause and stop buttons alongside it ).
 16) The app should be up and running now.
 
+To view the code:
+All of the relevant code is kept in separate C# script files that are in the assets folder. Double click on them to open them up and view the code.
+
 App details:
 
 Party tab:
