@@ -16,8 +16,8 @@ To install unity do the following.
 This project was recently updated to version 2019.3.6f1. Select that version, or the more recent one ( 2019.3.7f1 is the most recent as of 31.03 ).
 7) Once you choose the version, click next. The *Add modules to install * page will open up, in here, choose Android Build Support.
 8) Click Done. Unity will then proceed to install the ediot as well as android build files.
-9) Once the installation is finished, go to the projects tab in unity hub. Click the Add button on the right. Find the folder with the project,
-and select it. The project will be displayed in the projects tab, click on it to open it. Allow unity to build the project.
+9) Once the installation is finished, go to the projects tab in unity hub. Click the Add button on the right. Find the folder with the project, and select it. The project will be displayed in the projects tab, click on it to open it. Allow unity to build the project.
+NB! Make sure to allow unity internet acces through firewall if it requests it.
 10) Once the project is open, you will see unity's main editor interface and tabs. In the lower part of the screen you will see the project 
 assets folder and all files within, holding subfolders and scripts in it. In here, double click the *Game* scene ( the one with unity logo).
 11) Once the scene is open, you will see the hierarchy updated on the left side, as well as the first screen loaded into the scene tab in the
